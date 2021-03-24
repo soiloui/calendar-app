@@ -47,7 +47,6 @@ const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
                 <td>{totalDayDuration}</td>
                 <td>
                   {titleSortedDay}
-                  0
                 </td>
               </tr>
             )
