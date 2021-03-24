@@ -4,7 +4,7 @@ import Table from './Table';
 import Loader from './Loader';
 
 import getCalendarEvents from '../api-client';
-import { getDate } from '../utlis';
+import { getCalendarDate } from '../utlis';
 
 const CalendarSummary: React.FC = () => {
   const [calendarDays, setCalendarDays] = useState<any[]>([]);
@@ -13,16 +13,19 @@ const CalendarSummary: React.FC = () => {
 
   // getting events data when mounted
   useEffect(() => {
-    for (let i = 0; i < 7; i++) {
-      getCalendarEvents(getDate(currentDate, i))
-        .then(data => {
-          setCalendarDays((prev) => {
-            return [...prev, data]
-          });
+    async function fetchCalendarEvents() {
+      for (let i = 0; i < 7; i++) {
+        let response = await getCalendarEvents(getCalendarDate(currentDate, i));
 
-          if (i === 6) setIsLoading(false);
+        setCalendarDays((prev) => {
+          return [...prev, response]
         });
+
+        if (i === 6) setIsLoading(false);
+      }
     }
+
+    fetchCalendarEvents()
   }, []);
 
   return (

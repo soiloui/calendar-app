@@ -6,9 +6,6 @@ const StyledTable = styled.div`
   table{
     width: 100%;
     border-collapse: collapse;
-
-    box-shadow: 3px 3px 8px rgba(0,0,0, 0.3);
-    border-radius: 10px;
     overflow: hidden;
   }
   table, td{
@@ -39,6 +36,12 @@ const StyledTable = styled.div`
     background-color: #f2f2f2;
   }
 
+  .summary:last-child{
+    color: #fff;
+    background: #008cff;
+    font-weight: 700;
+  }
+
 
 
 
@@ -59,6 +62,9 @@ const StyledTable = styled.div`
     }
   }
   @media (min-width: 600px){
+    border-radius: 10px;
+    box-shadow: 3px 3px 7px rgba(0,0,0, 0.3);
+
     tr:hover {
       background-color: #ddd;
     }

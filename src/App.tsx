@@ -13,7 +13,6 @@ const App: React.FC = () => {
         <CalendarSummary />
       </div>
 
-
       <Footer />
     </div>
   );

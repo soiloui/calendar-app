@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledTable from '../styled-components/StyledTable';
-import { getDate, getCompactDate } from '../utlis';
+import { getCalendarDate, getCompactDate } from '../utlis';
 
 interface TableProps {
   currentDate: Date;
@@ -8,6 +8,10 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
+  let numberOfEventsSummary: number = 0;
+  let totalDurationSummary: number = 0;
+  const longestEventsSummary: string[] = [];
+
   return (
     <StyledTable>
       <table>
@@ -21,28 +25,42 @@ const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
         </thead>
         <tbody>
           {calendarDays.map((day: any[], index: number) => {
-
             // adding up the druation of tasks for the day
-            let totalDuration = day.reduce((acc, day) => {
+            const totalDayDuration: number = day.reduce((acc, day) => {
               return acc + day.durationInMinutes;
             }, 0);
 
-            // creat copy & sort array by title length
-            let titleSortedDay = day.sort((a: any, b: any) => {
+            // sort array by title length
+            const titleSortedDay = day.sort((a: any, b: any) => {
               return b.title.length - a.title.length
-            });
+            })[0].title;
+
+            // adding day duration / events / longest event to week summary
+            totalDurationSummary += totalDayDuration;
+            numberOfEventsSummary += day.length;
+            longestEventsSummary.push(titleSortedDay);
 
             return (
               <tr key={index}>
-                <td>{getCompactDate(getDate(currentDate, index))}</td>
+                <td>{getCompactDate(getCalendarDate(currentDate, index))}</td>
                 <td>{day.length}</td>
-                <td>{totalDuration}</td>
+                <td>{totalDayDuration}</td>
                 <td>
-                  {titleSortedDay[0].title}
+                  {titleSortedDay}
+                  0
                 </td>
               </tr>
             )
           })}
+
+          <tr className="summary">
+            <td>Total</td>
+            <td>{numberOfEventsSummary}</td>
+            <td>{totalDurationSummary}</td>
+            <td>
+              {longestEventsSummary.sort((a: any, b: any) => b.length - a.length)[0]}
+            </td>
+          </tr>
         </tbody>
       </table>
     </StyledTable>
