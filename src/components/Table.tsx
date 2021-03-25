@@ -8,9 +8,9 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
-  let numberOfEventsSummary: number = 0;
-  let totalDurationSummary: number = 0;
-  const longestEventsSummary: string[] = [];
+  let weekNumberOfEvents: number = 0;
+  let weekTotalDuration: number = 0;
+  const weekLongestTasks: any[] = [];
 
   return (
     <StyledTable>
@@ -26,38 +26,38 @@ const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
         <tbody>
           {calendarDays.map((day: any[], index: number) => {
             // adding up the druation of tasks for the day
-            const totalDayDuration: number = day.reduce((acc, day) => {
+            const dayTotalDuration: number = day.reduce((acc, day) => {
               return acc + day.durationInMinutes;
             }, 0);
 
-            // sort array by title length
-            const titleSortedDay = day.sort((a: any, b: any) => {
-              return b.title.length - a.title.length
-            })[0].title;
+            // sort day array by duration time [DESC] & get longest event
+            const dayLongestTask = day.sort((a: any, b: any) => {
+              return b.durationInMinutes - a.durationInMinutes
+            })[0];
 
             // adding day duration / events / longest event to week summary
-            totalDurationSummary += totalDayDuration;
-            numberOfEventsSummary += day.length;
-            longestEventsSummary.push(titleSortedDay);
+            weekTotalDuration += dayTotalDuration;
+            weekNumberOfEvents += day.length;
+            weekLongestTasks.push(dayLongestTask);
 
             return (
               <tr key={index}>
                 <td>{getCompactDate(getCalendarDate(currentDate, index))}</td>
                 <td>{day.length}</td>
-                <td>{totalDayDuration}</td>
-                <td>
-                  {titleSortedDay}
-                </td>
+                <td>{dayTotalDuration}</td>
+                <td>{dayLongestTask.title}</td>
               </tr>
             )
           })}
 
           <tr className="summary">
             <td>Total</td>
-            <td>{numberOfEventsSummary}</td>
-            <td>{totalDurationSummary}</td>
+            <td>{weekNumberOfEvents} <span>Events</span></td>
+            <td>{weekTotalDuration} <span>Minutes</span></td>
             <td>
-              {longestEventsSummary.sort((a: any, b: any) => b.length - a.length)[0]}
+              {weekLongestTasks.sort((a: any, b: any) => {
+                return b.durationInMinutes - a.durationInMinutes
+              })[0].title}
             </td>
           </tr>
         </tbody>

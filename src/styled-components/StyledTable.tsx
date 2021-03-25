@@ -2,6 +2,16 @@ import styled from 'styled-components';
 
 const StyledTable = styled.div`
   overflow-x: auto;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
 
   table{
     width: 100%;
@@ -26,23 +36,28 @@ const StyledTable = styled.div`
 
   tr{
     transition: background .15s ease;
+
+    &>:nth-child(1){
+      white-space: nowrap;
+    }
+
+    &:nth-child(even){
+      background-color: #f2f2f2;
+    }
   }
 
-  tr>:nth-child(1){
-    white-space: nowrap;
+  .summary{
+    span{
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    &:last-child{
+      color: #fff;
+      background: #008cff;
+      font-weight: 700;
+    }
   }
-
-  tr:nth-child(even){
-    background-color: #f2f2f2;
-  }
-
-  .summary:last-child{
-    color: #fff;
-    background: #008cff;
-    font-weight: 700;
-  }
-
-
 
 
   @media (max-width: 600px){
@@ -63,7 +78,7 @@ const StyledTable = styled.div`
   }
   @media (min-width: 600px){
     border-radius: 10px;
-    box-shadow: 3px 3px 7px rgba(0,0,0, 0.3);
+    box-shadow: 2px 4px 6px rgba(0,0,0, 0.3);
 
     tr:hover {
       background-color: #ddd;

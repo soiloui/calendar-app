@@ -9,7 +9,7 @@ import { getCalendarDate } from '../utlis';
 const CalendarSummary: React.FC = () => {
   const [calendarDays, setCalendarDays] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
-  const currentDate: Date = new Date;
+  const currentDate: Date = new Date();
 
   // getting events data when mounted
   useEffect(() => {
