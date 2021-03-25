@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/calendar-app/static/css/main.bc5701d0.chunk.css",
-    "main.js": "/calendar-app/static/js/main.fc317478.chunk.js",
-    "main.js.map": "/calendar-app/static/js/main.fc317478.chunk.js.map",
+    "main.css": "/calendar-app/static/css/main.927caa40.chunk.css",
+    "main.js": "/calendar-app/static/js/main.90cbfb75.chunk.js",
+    "main.js.map": "/calendar-app/static/js/main.90cbfb75.chunk.js.map",
     "runtime-main.js": "/calendar-app/static/js/runtime-main.2ec1c4ad.js",
     "runtime-main.js.map": "/calendar-app/static/js/runtime-main.2ec1c4ad.js.map",
     "static/js/2.8c830462.chunk.js": "/calendar-app/static/js/2.8c830462.chunk.js",
     "static/js/2.8c830462.chunk.js.map": "/calendar-app/static/js/2.8c830462.chunk.js.map",
     "index.html": "/calendar-app/index.html",
-    "static/css/main.bc5701d0.chunk.css.map": "/calendar-app/static/css/main.bc5701d0.chunk.css.map",
+    "static/css/main.927caa40.chunk.css.map": "/calendar-app/static/css/main.927caa40.chunk.css.map",
     "static/js/2.8c830462.chunk.js.LICENSE.txt": "/calendar-app/static/js/2.8c830462.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2ec1c4ad.js",
     "static/js/2.8c830462.chunk.js",
-    "static/css/main.bc5701d0.chunk.css",
-    "static/js/main.fc317478.chunk.js"
+    "static/css/main.927caa40.chunk.css",
+    "static/js/main.90cbfb75.chunk.js"
   ]
 }

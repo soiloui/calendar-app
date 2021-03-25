@@ -1,0 +1,2 @@
+@import url(https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700&display=swap);*{padding:0;margin:0;box-sizing:border-box}html{font-size:16px}.App{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;min-height:100vh;font-family:"Lexend",sans-serif}.App__content{-webkit-flex-grow:1;flex-grow:1;padding:2em;width:100%;max-width:1100px}@media (max-width:600px){html{font-size:13px}}
+/*# sourceMappingURL=main.927caa40.chunk.css.map */
