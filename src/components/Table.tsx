@@ -1,16 +1,21 @@
 import React from 'react';
 import StyledTable from '../styled-components/StyledTable';
+
+// Utils
 import { getCalendarDate, getCompactDate } from '../utlis';
+
+// Types
+import { CalendarEvent } from '../api-client';
 
 interface TableProps {
   currentDate: Date;
-  calendarDays: [][];
+  calendarDays: Array<CalendarEvent[]>;
 }
 
 const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
   let weekNumberOfEvents: number = 0;
   let weekTotalDuration: number = 0;
-  const weekLongestTasks: any[] = [];
+  const weekLongestTasks: Array<CalendarEvent> = [];
 
   return (
     <StyledTable>
@@ -24,7 +29,7 @@ const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
           </tr>
         </thead>
         <tbody>
-          {calendarDays.map((day: any[], index: number) => {
+          {calendarDays.map((day: CalendarEvent[], index: number) => {
 
             // adding up the druation of tasks for the day
             const dayTotalDuration: number = day.reduce((acc, day) => {
@@ -32,7 +37,7 @@ const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
             }, 0);
 
             // sort day array by duration time [DESC] & get longest event
-            const dayLongestTask = day.sort((a: any, b: any) => {
+            const dayLongestTask = day.sort((a: CalendarEvent, b: CalendarEvent) => {
               return b.durationInMinutes - a.durationInMinutes
             })[0];
 
@@ -56,7 +61,7 @@ const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
             <td>{weekNumberOfEvents} <span>Events</span></td>
             <td>{weekTotalDuration} <span>Minutes</span></td>
             <td>
-              {weekLongestTasks.sort((a: any, b: any) => {
+              {weekLongestTasks.sort((a: CalendarEvent, b: CalendarEvent) => {
                 return b.durationInMinutes - a.durationInMinutes
               })[0].title}
             </td>

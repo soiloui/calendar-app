@@ -3,11 +3,14 @@ import StyledCalendarSummary from '../styled-components/StyledCalendarSummary';
 import Table from './Table';
 import Loader from './Loader';
 
-import { CalendarEvent } from '../api-client';
+// Utils
 import { fetchCalendarEvents } from '../utlis';
 
+// Types
+import { CalendarEvent } from '../api-client';
+
 const CalendarSummary: React.FC = () => {
-  const [calendarDays, setCalendarDays] = useState<any[]>([]);
+  const [calendarDays, setCalendarDays] = useState<Array<CalendarEvent[]>>([]);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
   const [isError, setIsError] = useState<Boolean>(false);
   const currentDate: Date = new Date();
