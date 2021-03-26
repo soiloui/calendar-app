@@ -9,6 +9,11 @@ const StyledCalendarSummary = styled.div`
     color: #008cff;
   }
 
+  .error-message{
+    color: #f00;
+    font-weight: 500;
+  }
+
 `;
 
 export default StyledCalendarSummary;

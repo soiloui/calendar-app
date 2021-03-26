@@ -25,6 +25,7 @@ const Table: React.FC<TableProps> = ({ currentDate, calendarDays }) => {
         </thead>
         <tbody>
           {calendarDays.map((day: any[], index: number) => {
+
             // adding up the druation of tasks for the day
             const dayTotalDuration: number = day.reduce((acc, day) => {
               return acc + day.durationInMinutes;

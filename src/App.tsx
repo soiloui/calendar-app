@@ -4,7 +4,6 @@ import Footer from './components/Footer';
 import CalendarSummary from './components/CalendarSummary';
 
 const App: React.FC = () => {
-
   return (
     <div className="App">
       <Header />

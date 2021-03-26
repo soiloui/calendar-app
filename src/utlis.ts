@@ -1,3 +1,5 @@
+import getCalendarEvents, { CalendarEvent } from './api-client';
+
 // return a date object with the desired number of extended days
 export const getCalendarDate = (date: Date, days: number): Date => {
   const eventDate = new Date(date);
@@ -17,4 +19,15 @@ export const getCompactDate = (date: Date): string => {
     day = '0' + day;
 
   return [year, month, day].join('-');
+}
+
+// returns promise array of desired calendar events
+// arg1: how much days need to get
+// arg2: from which date
+export const fetchCalendarEvents = (daysRange: number, date: Date): Promise<Array<CalendarEvent[]>> => {
+  const promises = [];
+  for (let i = 0; i < daysRange; i++) {
+    promises.push(getCalendarEvents(getCalendarDate(date, i)));
+  }
+  return Promise.all(promises);
 }
